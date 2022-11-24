@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SiswaController;
+use App\Models\Siswa;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route:: get('halo',function(){
+//     return ["me" => "Cangtip"];
+// });
+
+Route::get('siswa',[SiswaController::class, 'index']);
+Route::get('siswa/{id}', [SiswaController::class, 'show']);
+Route::post('siswa', [SiswaController::class, 'store']);
+Route::post('siswa/{id}',[SiswaController::class, 'update']);
+Route::delete('siswa/{id}', [SiswaController::class, 'destroy']);
+
+Route :: resource ('siswa',Siswacontroller::class);
